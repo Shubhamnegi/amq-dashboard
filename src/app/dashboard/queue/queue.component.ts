@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { JolokiaService } from 'src/app/service/jolokia.service';
 import { QueueDetails } from 'src/app/interface/jolokia-interface';
 import { MatSort, MatTableDataSource } from '@angular/material';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-queue',
@@ -13,6 +14,7 @@ export class QueueComponent implements OnInit {
   detailedInfo = false;
   displayedColumns: string[] = ['Name', 'DLQ', 'QueueSize', 'Actions'];
   dataSource = new MatTableDataSource<QueueDetails>();
+  searchQueue = new FormControl();
 
   @ViewChild(MatSort) sort: MatSort;
 
@@ -25,6 +27,9 @@ export class QueueComponent implements OnInit {
   ngOnInit() {
     this.getQueueList();
     this.dataSource.sort = this.sort;
+    this.searchQueue.valueChanges.subscribe(data => {
+      this.dataSource.filter = data;
+    });
   }
 
   detailInfoToggle($event) {

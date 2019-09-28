@@ -13,6 +13,15 @@
       <mat-icon aria-label="">refresh</mat-icon>
     </button>
   </div>
+  <div fxFlex>
+    <mat-form-field class="w-100">
+      <input
+        matInput
+        placeholder="Enter Queue Name"
+        [formControl]="searchQueue"
+      />
+    </mat-form-field>
+  </div>
 </div>
 <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
 <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
@@ -32,7 +41,9 @@
   </ng-container>
 
   <ng-container matColumnDef="MemoryUsagePortion">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>MemoryUsagePortion</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      MemoryUsagePortion
+    </th>
     <td mat-cell *matCellDef="let element">{{ element.MemoryUsagePortion }}</td>
   </ng-container>
 
