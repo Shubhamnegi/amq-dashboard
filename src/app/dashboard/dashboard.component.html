@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <button mat-button (click)="navigateToQueue()">Queue</button>
+  <button mat-button (click)="navigateToTopic()">Topic</button>
+  <span class="spacer"></span>
+  <button mat-button (click)="logout()">Logout</button>
+</mat-toolbar>
+<h2>
+  Broker:<small>
+    <a href="{{ baseurl }}" target="_blank" rel="noopener noreferrer">{{
+      baseurl
+    }}</a></small
+  >
+</h2>
+
+<router-outlet></router-outlet>

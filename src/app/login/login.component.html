@@ -1,0 +1,48 @@
+<mat-toolbar color="primary">ActiveMQ Dashboard</mat-toolbar>
+<section class="mat-typography pad-20">
+  <div fxLayout="row">
+    <div fxFlex="65%">Big ActiveMQ Logo</div>
+    <div fxFlex>
+      <h1>Login</h1>
+      <form
+        class=""
+        [formGroup]="loginForm"
+        novalidate
+        autocomplete="off"
+        (submit)="login()"
+      >
+        <mat-form-field class="w-100">
+          <input
+            matInput
+            placeholder="Enter Activemq URL"
+            formControlName="baseurl"
+          />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <input
+            matInput
+            placeholder="Enter Username"
+            formControlName="username"
+          />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <input
+            type="password"
+            matInput
+            placeholder="Enter Password"
+            formControlName="password"
+          />
+        </mat-form-field>
+        <button
+          mat-raised-button
+          class="w-100"
+          type="submit"
+          color="accent"
+          [disabled]="!loginForm.valid"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

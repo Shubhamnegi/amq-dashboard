@@ -1,0 +1,56 @@
+<div fxLayout="row" fxLayoutAlign="space-between" class="pad-20">
+  <div fxFlex>
+    <mat-slide-toggle
+      color="accent"
+      [checked]="detailedInfo"
+      (toggleChange)="detailInfoToggle()"
+    >
+      Queue Details
+    </mat-slide-toggle>
+  </div>
+  <div fxFlex>
+    <button mat-icon-button (click)="getQueueList()">
+      <mat-icon aria-label="">refresh</mat-icon>
+    </button>
+  </div>
+</div>
+<mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.Name }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="DLQ">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>DLQ</th>
+    <td mat-cell *matCellDef="let element">{{ element.DLQ }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="QueueSize">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>QueueSize</th>
+    <td mat-cell *matCellDef="let element">{{ element.QueueSize }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="MemoryUsagePortion">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>MemoryUsagePortion</th>
+    <td mat-cell *matCellDef="let element">{{ element.MemoryUsagePortion }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="InFlightCount">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>InFlightCount</th>
+    <td mat-cell *matCellDef="let element">{{ element.InFlightCount }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="CursorMemoryUsage">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>CursorMemoryUsage</th>
+    <td mat-cell *matCellDef="let element">{{ element.CursorMemoryUsage }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="Actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let element"></td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
