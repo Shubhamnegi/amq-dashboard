@@ -14,6 +14,13 @@
         <mat-form-field class="w-100">
           <input
             matInput
+            placeholder="Enter Activemq URL"
+            formControlName="baseurl"
+          />
+        </mat-form-field>
+        <mat-form-field class="w-100">
+          <input
+            matInput
             placeholder="Enter Username"
             formControlName="username"
           />
@@ -26,7 +33,13 @@
             formControlName="password"
           />
         </mat-form-field>
-        <button mat-raised-button class="w-100" type="submit" color="accent">
+        <button
+          mat-raised-button
+          class="w-100"
+          type="submit"
+          color="accent"
+          [disabled]="!loginForm.valid"
+        >
           Login
         </button>
       </form>

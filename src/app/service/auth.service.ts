@@ -1,19 +1,24 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  token = null;
 
-  constructor() { }
+  constructor(private router: Router) { }
+
 
   login(username: string, password: string) {
     const token = window.btoa(`${username}:${password}`);
-    localStorage.setItem('auth_token', token);
-    console.log('[authservice][login] token', token);
+    this.token = token;
+    console.log('[authservice][login] token', this.token);
+    this.router.navigate(['dashboard']);
   }
   logout() {
-    localStorage.clear();
+    this.token = null;
+    this.router.navigate(['login']);
   }
 
 }
