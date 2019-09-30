@@ -6,3 +6,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Easy access to activemq dashboards
 
+## nginx configuration 
+Use nginx configuration for proxy, file nginx.conf
+X-Host: host value
