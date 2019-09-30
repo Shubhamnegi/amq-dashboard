@@ -1,5 +1,6 @@
 <div fxLayout="row" fxLayoutAlign="space-between" class="pad-20">
   <div fxFlex>
+    <button mat-flat-button (click)="getQueueList()" color="accent" style="margin-right:20px;">Reload</button>
     <mat-slide-toggle
       color="accent"
       [checked]="detailedInfo"
@@ -8,11 +9,7 @@
       Queue Details
     </mat-slide-toggle>
   </div>
-  <div fxFlex>
-    <button mat-icon-button (click)="getQueueList()">
-      <mat-icon aria-label="">refresh</mat-icon>
-    </button>
-  </div>
+  
   <div fxFlex>
     <mat-form-field class="w-100">
       <input
