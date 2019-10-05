@@ -9,7 +9,7 @@ import { JolokiaInterface, QueueDetails } from '../interface/jolokia-interface';
   providedIn: 'root'
 })
 export class JolokiaService {
-  proxyHost = 'http://localhost:8080';
+  proxyHost = 'http://localhost:8081/proxy';
   baseurl: string = null;
   constructor(private http: HttpClient, private authService: AuthService) { }
 
