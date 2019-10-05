@@ -9,7 +9,7 @@ import { JolokiaInterface, QueueDetails } from '../interface/jolokia-interface';
   providedIn: 'root'
 })
 export class JolokiaService {
-
+  proxyHost = 'http://localhost:8081/proxy';
   baseurl: string = null;
   constructor(private http: HttpClient, private authService: AuthService) { }
 
@@ -27,12 +27,13 @@ export class JolokiaService {
     console.log('[JolokiaService][getQueueList] auth token', token);
     let headers = new HttpHeaders();
     headers = headers.append('Authorization', 'Basic ' + token);
+    headers = headers.append('X-Host', this.baseurl);
     return headers;
   }
 
   getQueueList(): Promise<QueueDetails[]> {
     const headers = this.getHeaders();
-    return this.http.get(this.baseurl +
+    return this.http.get(this.proxyHost +
       APPLICATION_CONSTANTS.JOLOKIA_READ +
       '/org.apache.activemq:type=Broker,brokerName=ActiveMQ_Prod_1,destinationType=Queue,destinationName=*/Name,DLQ,MemoryUsagePortion,QueueSize,InFlightCount,CursorMemoryUsage',
       { headers: headers })

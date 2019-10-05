@@ -32,7 +32,7 @@ export class QueueComponent implements OnInit {
     });
   }
 
-  detailInfoToggle($event) {
+  detailInfoToggle() {
     this.detailedInfo = !this.detailedInfo;
     if (this.detailedInfo) {
       this.displayedColumns = ['Name', 'DLQ', 'QueueSize', 'MemoryUsagePortion', 'InFlightCount', 'CursorMemoryUsage', 'Actions'];

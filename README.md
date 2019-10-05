@@ -10,3 +10,6 @@ Easy access to activemq dashboards
 - List,sort,filter and purge queue
 
 
+## nginx configuration 
+Use nginx configuration for proxy, file nginx.conf
+X-Host: host value
